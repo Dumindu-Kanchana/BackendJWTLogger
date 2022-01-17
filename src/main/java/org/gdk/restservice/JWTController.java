@@ -4,10 +4,9 @@ import org.json.JSONObject;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.nio.charset.StandardCharsets;
 
@@ -34,6 +33,18 @@ public class JWTController {
             return new ResponseEntity<String>("Error while processing JWT", HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<String>("jwt received", HttpStatus.OK);
+    }
+
+    @PostMapping(
+            value = "/rest-auth",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<CreateResponse> postBody(@RequestBody Person person, @RequestHeader("Accept") String accept) {
+        logger.info("Username/Password of the request is " + person.getCredentials().getUsername() +
+                " " + person.getCredentials().getPassword());
+        CreateResponse response = new CreateResponse();
+        response.setResponse(person.getCredentials().getPassword());
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType(accept)).body(response);
     }
 
     private byte[] decode(String payload) throws IllegalArgumentException {
