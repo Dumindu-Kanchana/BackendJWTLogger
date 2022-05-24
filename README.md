@@ -1,5 +1,5 @@
-# BackendJWTLogger
-simple http springboot app for logging a jwt which comes in the request header. 
+# SleepyService
+simple http springboot app that can be used as a slow backend. 
 
 To run the application,
 1. build the project
@@ -7,10 +7,15 @@ To run the application,
 3. configure the HOME_LOG and the fileNamePattern in the logback.xml.
 4. run the jar file with the command. <br />
 ```sh
-            java -jar BackendJWTLogger-1.0.0.jar
+            java -jar SleepyService-1.0.0.jar
 ```
 Or you can specify the application.properties file location with the following command.
    
 ```sh
-java -jar BackendJWTLogger-1.0.0.jar --spring.config.location=/path/application.properties
+java -jar SleepyService-1.0.0.jar --spring.config.location=/path/application.properties
+```
+Sample curl command
+
+```sh
+curl "http://localhost:8080/sleepy-backend/{sleep-time-in-seconds}"
 ```

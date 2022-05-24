@@ -12,9 +12,9 @@
     </parent>
 
     <groupId>org.gdk</groupId>
-    <artifactId>BackendJWTLogger</artifactId>
+    <artifactId>SleepyService</artifactId>
     <version>1.0.0</version>
-    <name>BackendJWTLogger</name>
+    <name>SleepyService</name>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
