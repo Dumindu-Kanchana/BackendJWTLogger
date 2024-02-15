@@ -14,3 +14,9 @@ Or you can specify the application.properties file location with the following c
 ```sh
 java -jar BackendJWTLogger-1.0.0.jar --spring.config.location=/path/application.properties
 ```
+
+test curl
+
+```sh
+curl -X POST "http://localhost:8080/pem-cert" -d '{<>}' -H 'Content-Type: application/json'
+```
